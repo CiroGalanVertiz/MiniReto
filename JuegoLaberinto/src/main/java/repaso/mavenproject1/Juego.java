@@ -19,10 +19,10 @@ public class Juego {
         scanner = new Scanner(System.in);
     }
 
-    public void iniciar() {
+    /*public void iniciar() {
         int opcion;
 
-        do {
+        /*do {
             mostrarMenu();
             opcion = scanner.nextInt();
             scanner.nextLine(); 
@@ -73,5 +73,5 @@ public class Juego {
         System.out.println("A = Izquierda");
         System.out.println("D = Derecha");
         System.out.println("Llega a la salida (S) para ganar.");
-    }
+    }*/
 }

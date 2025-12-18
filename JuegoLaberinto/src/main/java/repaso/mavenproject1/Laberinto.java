@@ -13,6 +13,7 @@ import java.util.Random;
 public class Laberinto {
 
     private String[][] mapa;
+    private String[][] mapaAux;
     private int jugadorX;
     private int jugadorY;
     private int salidaX;
@@ -21,22 +22,22 @@ public class Laberinto {
     private Random random = new Random();
 
     public void inicializar() {
-        int opcion =random.nextInt(10);
+        int opcion =1;
         switch(opcion){
     case 1 -> {
         String[][] mapa1 = {
-            {"_","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"},
-            {"|"," ","_"," "," "," ","_","_","|","_","_"," "," "," "," "," ","|","_","_"," "," ","|"},
-            {"|"," "," "," ","|","_","_"," "," "," ","_","_","|","_","_","|","_","_"," "," ","|"},
-            {"|"," ","|","_","_"," "," ","|","_","_"," "," "," ","_","_","|","_","_"," "," ","|"},
-            {"|"," ","|","_","_","|","_","_"," "," "," ","|","_","_"," "," "," ","|","_","_","|"},
-            {"|","_","_"," "," "," ","_","_","|","_","_"," "," ","|","_","_","|","_","_"," ","|"},
-            {"|"," "," "," ","|","_","_"," "," "," ","_","_","|"," "," "," ","_","_","|"," ","|"},
-            {"|"," ","|","_","_"," "," ","|","_","_"," "," ","_","_","|"," "," "," ","_","_","|"},
+            {"","_","_"," ","_","_","_","_","_"," ","_","_","_","_","_"," ","_","_"," ","_","_"},
+            {"|"," ","_"," "," "," "," "," ","|","_","_"," "," "," "," "," ","|","_","_"," ","|"},
+            {"|"," "," "," ","|","_","_"," "," "," ","_","_"," ","_","_"," ","_","_"," "," ","|"},
+            {"|"," ","|","_","_"," "," ","|","_"," "," "," "," ","_","_"," ","_","_"," "," ","|"},
+            {"|"," ","|","_","_","|","_","_"," "," "," ","|","_","_"," "," "," "," ","_","_","|"},
+            {"|","_","_"," "," "," ","_","_","|","_","_"," "," ","|","_","_","|"," ","_"," ","|"},
+            {"|"," "," "," ","|","_","_"," "," "," ","_","_","|"," "," "," ","_"," ","|"," ","|"},
+            {"|"," ","|","_","_"," "," ","|","_","_"," "," ","_","_","|"," "," "," "," "," ","|"},
             {"|"," ","|","_","_","|","_","_"," "," "," ","|","_","_"," "," "," ","_","_"," ","|"},
             {"|","_","_"," "," "," ","_","_","|","_","_"," "," ","|","_","_"," "," "," "," ","|"},
             {"|"," "," "," ","|","_","_"," "," "," ","_","_","|"," "," "," "," "," "," "," ","|"},
-            {"|","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_","|"}
+            {"|","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","_"," ","_","|"}
         };
         mapa = mapa1;
     }
@@ -206,7 +207,7 @@ public class Laberinto {
                 
             }
            
-        };
+        }
 
        
 
@@ -218,6 +219,7 @@ public class Laberinto {
         // Posición aleatoria de la salida
 
         mapa[11][19] = "S";
+        mapaAux=mapa;
     }
 
     public void mostrar(String[][] mapa) {
@@ -248,14 +250,14 @@ public class Laberinto {
         }
         if(nuevaX!=jugadorX){
             if (movimientoValido(nuevaX, nuevaY,"_")) {
-            mapa[jugadorX][jugadorY] = " ";
+            mapa[jugadorX][jugadorY]=mapaAux[jugadorX][jugadorY];
             jugadorX = nuevaX;
             jugadorY = nuevaY;
             mapa[jugadorX][jugadorY] = "J";
         }
         }
         else if (movimientoValido(nuevaX, nuevaY,"|")) {
-            mapa[jugadorX][jugadorY] = " ";
+            mapa[jugadorX][jugadorY]=mapaAux[jugadorX][jugadorY];
             jugadorX = nuevaX;
             jugadorY = nuevaY;
             mapa[jugadorX][jugadorY] = "J";
@@ -274,7 +276,7 @@ public class Laberinto {
     }
 
     private boolean movimientoValido(int x, int y,String barrera) {
-        return mapa[x][y] == barrera;
+        return !mapa[x][y].equals(barrera);
     }
 
     public boolean verificarVictoria() {

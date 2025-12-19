@@ -7,3 +7,5 @@ Este proyecto contiene el modelo relacional y el script SQL para una base de dat
 - Participaciones con puntuación y posición
 
 El archivo `miniReto.sql` contiene toda la estructura y datos de prueba.
+
+

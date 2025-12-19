@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TouchXperience Games | Descargas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cssindex.css">
+  <link rel="icon" type="image/jpg" href="logoproj.png" />
+</head>
+
+<body id="top">
+
+  <!-- ================= HEADER ================= -->
+  <header>
+
+    <!-- Barra superior: logo + menú + login -->
+    <div class="topbar">
+
+      <div class="logo">
+        <h1>TouchXperience Games</h1>
+      </div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Menú Principal</a>
+          </li>
+
+          <!-- Dropdown Juegos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle">
+              Juegos
+            </a>
+
+            <!-- Submenú visible mientras el ratón esté encima -->
+            <ul class="dropdown-menu">
+              <li>
+                <a href="laberinto.html" class="dropdown-link">
+                  Juego del Laberinto
+                </a>
+              </li>
+              <li>
+                <a href="sudoku.html" class="dropdown-link">
+                  Juego del Sudoku
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="descargas.html" class="nav-link active">Descargas</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="contacto.html" class="nav-link">Contáctanos</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="ranking.html" class="nav-link">Ranking</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="login-area">
+        <a href="login.html" class="login-btn">Login</a>
+      </div>
+
+    </div>
+
+    <!-- Cabecera principal -->
+    <div class="header-content">
+      <h2>Descargas</h2>
+      <p>
+        Aquí puedes descargar los archivos <strong>.java</strong> de cada juego.
+        (Coloca los .java en la ruta que prefieras y ajusta los enlaces si lo necesitas).
+      </p>
+    </div>
+
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- Presentación -->
+    <section class="intro">
+      <h2>Descarga el código fuente</h2>
+
+      <p>
+        En esta sección tienes el acceso directo a los archivos Java del proyecto.
+        Puedes descargarlos y ejecutarlos en tu IDE (NetBeans / IntelliJ / Eclipse).
+      </p>
+
+      <p>
+        Nota: si al descargar se abre en el navegador, asegúrate de que el servidor permite la descarga
+        (y que el archivo existe en la ruta indicada).
+      </p>
+    </section>
+
+    <!-- Sección descargas (mismo estilo que "games" del index) -->
+    <section class="games">
+
+      <h2>Archivos .java disponibles</h2>
+
+      <!-- Descarga Laberinto -->
+      <article class="game-card">
+
+        <h3>Laberinto (Java)</h3>
+
+        <p>
+          Descarga el código fuente del juego del Laberinto en formato <strong>.java</strong>.
+        </p>
+
+        <!-- Ajusta la ruta/nombre del archivo según tu proyecto -->
+        <a class="game-btn" href="descargas/Laberinto.java" download>
+          Descargar Laberinto.java
+        </a>
+
+        <!-- Alternativa por si quieres más de un archivo:
+        <div class="download-list">
+          <a class="game-btn" href="descargas/LaberintoMain.java" download>Descargar LaberintoMain.java</a>
+          <a class="game-btn" href="descargas/LaberintoMapa.java" download>Descargar LaberintoMapa.java</a>
+        </div>
+        -->
+
+      </article>
+
+      <!-- Descarga Sudoku -->
+      <article class="game-card">
+
+        <h3>Sudoku (Java)</h3>
+
+        <p>
+          Descarga el código fuente del juego del Sudoku en formato <strong>.java</strong>.
+        </p>
+
+        <!-- Ajusta la ruta/nombre del archivo según tu proyecto -->
+        <a class="game-btn" href="descargas/Sudoku.java" download>
+          Descargar Sudoku.java
+        </a>
+
+        <!-- Alternativa por si quieres más de un archivo:
+        <div class="download-list">
+          <a class="game-btn" href="descargas/SudokuMain.java" download>Descargar SudokuMain.java</a>
+          <a class="game-btn" href="descargas/SudokuUtils.java" download>Descargar SudokuUtils.java</a>
+        </div>
+        -->
+
+      </article>
+
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+
+    <div class="footer-content">
+      <p>
+        © 2025 TouchXperience Games. Todos los derechos reservados.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a href="contacto.html">Contáctanos</a>
+      <a href="descargas.html">Descargas</a>
+      <a href="ranking.html">Ranking</a>
+    </div>
+
+    <div class="login-area">
+      <a href="#top" class="login-btn">Volver arriba ↑</a>
+    </div>
+
+  </footer>
+
+</body>
+</html>

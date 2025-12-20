@@ -65,7 +65,7 @@ public class Juego {
         System.out.println("1. Jugar");
         System.out.println("2. Instrucciones");
         System.out.println("3. Salir");
-        System.out.print("Elige una opción: ");
+        System.out.print("Elige una opcion: ");
     }
 
     private void mostrarInstrucciones() {

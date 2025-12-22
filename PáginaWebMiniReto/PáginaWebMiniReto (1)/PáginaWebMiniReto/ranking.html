@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Juegos | Ranking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cssindex.css">
+  <link rel="icon" type="image/png" href="logoproj.png">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+
+    <div class="topbar">
+
+      <div class="logo">
+        <h1>Portal de Juegos</h1>
+      </div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Menú Principal</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle">Juegos</a>
+            <ul class="dropdown-menu">
+              <li><a href="laberinto.html">Juego del Laberinto</a></li>
+              <li><a href="sudoku.html">Juego del Sudoku</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="descargas.html" class="nav-link">Descargas</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="contacto.html" class="nav-link">Contáctanos</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="ranking.html" class="nav-link active">Ranking</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="login-area">
+        <a href="login.html" class="login-btn">Login</a>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- ===== TOP JUGADORES ===== -->
+    <section class="intro">
+      <h2>Top jugadores</h2>
+      <p>
+        La puntuación total es la suma de ambos juegos.
+        ¡Juega y supera el récord!
+      </p>
+    </section>
+
+
+
+    <!-- ===== RANKINGS ===== -->
+    <section class="games">
+
+      <h2>Tabla de ranking</h2>
+
+
+      <!-- CONTENEDOR DE LAS DOS CAJAS -->
+
+
+      <!-- CAJA LABERINTO -->
+      <article class="game-card">
+        <h3>🏆 Ranking Laberinto</h3>
+
+        <table class="ranking-mini">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>MazeKing</td>
+              <td>1000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>NeoRunner</td>
+              <td>980</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>ByteMaster</td>
+              <td>950</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Solstice</td>
+              <td>920</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>PixelNinja</td>
+              <td>840</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <a href="laberinto.html" class="game-btn">Ir a Laberinto</a>
+      </article>
+
+      <!-- CAJA SUDOKU -->
+      <article class="game-card">
+        <h3>🧩 Ranking Sudoku</h3>
+
+        <table class="ranking-mini">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>SudokuSensei</td>
+              <td>990</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Solstice</td>
+              <td>960</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>NeoRunner</td>
+              <td>940</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>LogicQueen</td>
+              <td>920</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>RayoAzul</td>
+              <td>860</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <a href="sudoku.html" class="game-btn">Ir a Sudoku</a>
+      </article>
+
+
+
+    </section>
+
+
+
+    <!-- ===== COMO SE CALCULA ===== -->
+    <section class="intro">
+      <h2>¿Cómo se calcula la puntuación?</h2>
+      <p><strong>Laberinto:</strong> tiempo, pasos y penalizaciones.</p>
+      <p><strong>Sudoku:</strong> dificultad y errores.</p>
+      <p><strong>Total:</strong> suma de ambas puntuaciones.</p>
+    </section>
+  </main>
+  <!-- ================= FOOTER ================= -->
+  <footer>
+
+    <div class="footer-content">
+      <p>© 2025 Portal de Juegos. Todos los derechos reservados.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="contacto.html">Contáctanos</a>
+      <a href="descargas.html">Descargas</a>
+      <a href="ranking.html">Ranking</a>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>

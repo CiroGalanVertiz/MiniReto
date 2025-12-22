@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Juegos | Contacto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cssindex.css">
+  <link rel="icon" type="image/jpg" href="logoproj.png" />
+</head>
+
+<body id="top">
+
+  <!-- ================= HEADER ================= -->
+  <header>
+
+    <!-- Barra superior: logo + menú + login -->
+    <div class="topbar">
+
+      <div class="logo">
+        <h1>Portal de Juegos</h1>
+      </div>
+
+      <nav class="nav" aria-label="Menú principal">
+        <ul class="nav-list">
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Menú Principal</a>
+          </li>
+
+          <!-- Dropdown Juegos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
+              Juegos
+            </a>
+
+            <ul class="dropdown-menu" aria-label="Submenú juegos">
+              <li>
+                <a href="laberinto.html" class="dropdown-link">
+                  Juego del Laberinto
+                </a>
+              </li>
+              <li>
+                <a href="sudoku.html" class="dropdown-link">
+                  Juego del Sudoku
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="descargas.html" class="nav-link">Descargas</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="contacto.html" class="nav-link active" aria-current="page">
+              Contáctanos
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="ranking.html" class="nav-link">Ranking</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="login-area">
+        <a href="login.html" class="login-btn">Login</a>
+      </div>
+
+    </div>
+
+    <!-- Cabecera principal -->
+    <div class="header-content">
+      <h2>Contacto</h2>
+      <p>
+        ¿Tienes alguna duda, sugerencia o problema con nuestros juegos?
+        Escríbenos y te responderemos lo antes posible.
+      </p>
+    </div>
+
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <section class="intro">
+      <h2>Formulario de contacto</h2>
+      <p>
+        Utiliza este formulario para ponerte en contacto con el equipo
+        de Portal de Juegos.
+      </p>
+      <br>
+
+      <article class="game-card">
+        <h3>Envíanos un mensaje</h3>
+
+        <form class="login-form" action="#" method="post" autocomplete="on">
+
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="ejemplo@email.com" required>
+
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto" placeholder="Motivo del contacto" required>
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí tu mensaje..." required></textarea>
+
+          <button type="submit" class="game-btn">
+            Enviar mensaje
+          </button>
+
+          <p class="form-note">
+            También puedes ver el proyecto en
+            <a href="https://github.com/CiroGalanVertiz/MiniReto" class="form-link">GitHub</a>
+            <!-- Aquí pones tú el enlace -->
+          </p>
+
+        </form>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+
+    <div class="footer-content">
+      <p>
+        © 2025 Portal de Juegos. Todos los derechos reservados.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a href="contacto.html">Contáctanos</a>
+      <a href="descargas.html">Descargas</a>
+      <a href="ranking.html">Ranking</a>
+    </div>
+
+    <div class="login-area">
+      <a href="#top" class="login-btn">Volver arriba ↑</a>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>

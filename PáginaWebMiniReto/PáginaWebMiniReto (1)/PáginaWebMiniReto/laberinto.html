@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Juegos | Laberinto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cssindex.css">
+  <link rel="icon" type="image/jpg" href="logoproj.png" />
+</head>
+
+<body id="top">
+
+  <!-- ================= HEADER ================= -->
+  <header>
+
+    <!-- Barra superior: logo + menú + login -->
+    <div class="topbar">
+
+      <div class="logo">
+        <h1>Portal de Juegos</h1>
+      </div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Menú Principal</a>
+          </li>
+
+          <!-- Dropdown Juegos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active">
+              Juegos
+            </a>
+
+            <!-- Submenú visible mientras el ratón esté encima -->
+            <ul class="dropdown-menu">
+              <li>
+                <a href="laberinto.html" class="dropdown-link active">
+                  Juego del Laberinto
+                </a>
+              </li>
+              <li>
+                <a href="sudoku.html" class="dropdown-link">
+                  Juego del Sudoku
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="descargas.html" class="nav-link">Descargas</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="contacto.html" class="nav-link">Contáctanos</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="ranking.html" class="nav-link">Ranking</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="login-area">
+        <a href="login.html" class="login-btn">Login</a>
+      </div>
+
+    </div>
+
+    <!-- Cabecera principal -->
+    <div class="header-content">
+      <h2>Juego del Laberinto</h2>
+      <p>
+        Encuentra la salida moviéndote por el mapa sin chocar con las paredes.
+        Aquí tienes el vídeo, una captura, reglas, cómo jugar y consejos.
+      </p>
+    </div>
+
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- Intro -->
+    <section class="intro">
+      <h2>¿Qué es el juego del Laberinto?</h2>
+      <p>
+        El Laberinto es un juego de orientación y reflejos donde controlas a un personaje
+        dentro de un mapa lleno de paredes. Tu objetivo es llegar desde el punto de inicio
+        hasta la meta en el menor tiempo posible.
+      </p>
+
+      <p>
+        En esta página encontrarás: un vídeo del juego, una imagen/captura, reglas claras,
+        cómo se juega y recomendaciones para mejorar.
+      </p>
+    </section>
+
+    <!-- Media: Video + Imagen -->
+    <section class="games">
+      <h2>Vídeo y captura del juego</h2>
+
+      <div class="game-card">
+        <h3>Vídeo (tutorial / gameplay)</h3>
+
+        <!-- Sustituye el src por tu vídeo de YouTube o un mp4 local -->
+        <div class="video-wrap">
+          <video controls width="560">
+            <source src="laberintovideo.mp4" type="video/mp4">
+            Tu navegador no soporta vídeo HTML5
+          </video>
+
+        </div>
+
+      </div>
+
+      <div class="game-card">
+        <h3>Imagen / Captura</h3>
+
+        <a href="laberinto.html" class="game-image">
+          <!-- Cambia el archivo por tu captura real -->
+          <img src="laberinto.jpg" alt="Captura del juego del Laberinto">
+        </a>
+
+
+        <a href="descargas.html" class="game-btn">
+          Ir a Descargas
+        </a>
+      </div>
+    </section>
+
+    <!-- Cómo jugar -->
+    <section class="intro">
+      <h2>Cómo jugar</h2>
+
+      <p>
+        El objetivo es llegar a la salida sin atravesar paredes. Normalmente tendrás un punto
+        de inicio y una meta marcada.
+      </p>
+
+      <ul>
+        <li><strong>1)</strong> Inicia la partida.</li>
+        <li><strong>2)</strong> Mueve al personaje por los pasillos del laberinto.</li>
+        <li><strong>3)</strong> Evita chocar con las paredes.</li>
+        <li><strong>4)</strong> Encuentra la ruta correcta hasta la salida.</li>
+        <li><strong>5)</strong> Completa el laberinto y guarda tu puntuación/tiempo.</li>
+      </ul>
+    </section>
+
+    <!-- Reglas -->
+    <section class="games">
+      <h2>Reglas del Laberinto</h2>
+
+      <article class="game-card">
+        <h3>Reglas básicas</h3>
+        <ul>
+          <li>Tu personaje <strong>no puede atravesar paredes</strong>.</li>
+          <li>El objetivo es llegar a la <strong>salida/meta</strong> desde el punto de inicio.</li>
+          <li>Si tu juego tiene tiempo: intenta completar el laberinto en el <strong>menor tiempo</strong>.</li>
+          <li>Si tu juego tiene puntos: evita errores para no <strong>perder puntuación</strong>.</li>
+        </ul>
+        <p>
+          Un laberinto se resuelve con observación: a veces el camino más corto no es el más obvio.
+        </p>
+      </article>
+
+      <article class="game-card">
+        <h3>Errores típicos</h3>
+        <ul>
+          <li>Ir “a lo loco” sin mirar el mapa y acabar en callejones sin salida.</li>
+          <li>Repetir el mismo camino una y otra vez sin probar rutas alternativas.</li>
+          <li>No fijarse en referencias (esquinas, cruces) y perder la orientación.</li>
+        </ul>
+        <p>
+          Consejo: memoriza los cruces importantes y marca mentalmente por dónde ya has pasado.
+        </p>
+      </article>
+    </section>
+
+    <!-- Controles / Interfaz -->
+    <section class="intro">
+      <h2>Controles e interfaz</h2>
+
+
+      <ul>
+        <li><strong>Flechas</strong> (↑ ↓ ← →) para moverte.</li>
+        <li><strong>R</strong> para reiniciar partida.</li>
+        <li><strong>Esc</strong> para pausar/salir.</li>
+        <li><strong>Indicadores</strong>: tiempo, movimientos, vidas o puntuación.</li>
+      </ul>
+    </section>
+
+    <!-- Consejos -->
+    <section class="games">
+      <h2>Consejos para completar el laberinto</h2>
+
+      <article class="game-card">
+        <h3>Método de la mano derecha/izquierda</h3>
+        <p>
+          Si el laberinto es “perfecto” (sin islas raras), puedes seguir siempre la pared de la
+          derecha (o izquierda) y tarde o temprano llegarás a la salida.
+        </p>
+      </article>
+
+      <article class="game-card">
+        <h3>Evita repetir callejones</h3>
+        <p>
+          Si entras en un callejón sin salida, vuelve al último cruce y toma una ruta distinta.
+          No pierdas tiempo recorriendo el mismo camino varias veces.
+        </p>
+      </article>
+
+      <article class="game-card">
+        <h3>Planifica en cruces</h3>
+        <p>
+          Los cruces son decisiones. Para orientarte mejor, fíjate en “puntos clave”
+          (un pasillo largo, una zona abierta, una esquina) y úsalos como referencia.
+        </p>
+      </article>
+    </section>
+
+    <!-- CTA -->
+    <section class="intro">
+      <h2>¿Listo para jugar?</h2>
+      <p>
+        Descarga el proyecto en Java desde la sección de descargas y compite por el mejor tiempo/puntuación
+        en el ranking.
+      </p>
+
+      <a href="descargas.html" class="game-btn">Descargar Laberinto (.java)</a>
+      <br>
+      <a href="ranking.html" class="game-btn">Ver Ranking</a>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+
+    <div class="footer-content">
+      <p>
+        © 2025 Portal de Juegos. Todos los derechos reservados.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a href="contacto.html">Contáctanos</a>
+      <a href="descargas.html">Descargas</a>
+      <a href="ranking.html">Ranking</a>
+    </div>
+
+    <div class="login-area">
+      <a href="#top" class="login-btn">Volver arriba ↑</a>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Portal de Juegos | Sudoku</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cssindex.css">
+  <link rel="icon" type="image/jpg" href="logoproj.png" />
+</head>
+
+<body id="top">
+
+  <!-- ================= HEADER ================= -->
+  <header>
+
+    <!-- Barra superior: logo + menú + login -->
+    <div class="topbar">
+
+      <div class="logo">
+        <h1>Portal de Juegos</h1>
+      </div>
+
+      <nav class="nav">
+        <ul class="nav-list">
+
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Menú Principal</a>
+          </li>
+
+          <!-- Dropdown Juegos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active">
+              Juegos
+            </a>
+
+            <!-- Submenú visible mientras el ratón esté encima -->
+            <ul class="dropdown-menu">
+              <li>
+                <a href="laberinto.html" class="dropdown-link">
+                  Juego del Laberinto
+                </a>
+              </li>
+              <li>
+                <a href="sudoku.html" class="dropdown-link active">
+                  Juego del Sudoku
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="descargas.html" class="nav-link">Descargas</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="contacto.html" class="nav-link">Contáctanos</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="ranking.html" class="nav-link">Ranking</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="login-area">
+        <a href="login.html" class="login-btn">Login</a>
+      </div>
+
+    </div>
+
+    <!-- Cabecera principal -->
+    <div class="header-content">
+      <h2>Juego del Sudoku</h2>
+      <p>
+        Pon a prueba tu lógica completando la cuadrícula sin repetir números.
+        Aquí tienes el vídeo, capturas, reglas y cómo jugar.
+      </p>
+    </div>
+
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- Intro -->
+    <section class="intro">
+      <h2>¿Qué es el Sudoku?</h2>
+      <p>
+        El Sudoku es un juego de lógica en el que debes completar una cuadrícula (normalmente 9×9)
+        con números del 1 al 9. La clave es que no se pueden repetir números en filas, columnas
+        ni en cada subcuadrícula 3×3.
+      </p>
+
+      <p>
+        En esta página encontrarás: un vídeo del juego, una imagen/captura, reglas claras y
+        consejos para mejorar tu puntuación.
+      </p>
+    </section>
+
+    <!-- Media: Video + Imagen -->
+    <section class="games">
+      <h2>Vídeo y captura del juego</h2>
+
+      <div class="game-card">
+        <h3>Vídeo (tutorial / gameplay)</h3>
+
+        <!-- Sustituye el src por tu vídeo de YouTube o un mp4 local -->
+        <div class="video-wrap">
+          <video controls width="560">
+            <source src="YTDown.com_YouTube_TUTORIAL-DE-SUDOKU_Media_CgcZV9c2A_Q_001_1080p.mp4" type="video/mp4">
+            Tu navegador no soporta vídeo HTML5
+          </video>
+
+        </div>
+
+      </div>
+
+      <div class="game-card">
+        <h3>Imagen / Captura</h3>
+
+        <a href="sudoku.html" class="game-image">
+          <!-- Cambia el archivo por tu captura real -->
+          <img src="sudokus.webp" alt="Captura del juego del Sudoku">
+        </a>
+
+
+        <a href="descargas.html" class="game-btn">
+          Ir a Descargas
+        </a>
+      </div>
+    </section>
+
+    <!-- Cómo jugar -->
+    <section class="intro">
+      <h2>Cómo jugar</h2>
+
+      <p>
+        El objetivo es rellenar los huecos con números correctos. Empiezas con algunas casillas ya
+        rellenadas y debes deducir el resto usando lógica.
+      </p>
+
+      <ul>
+        <li><strong>1)</strong> Elige una casilla vacía del tablero.</li>
+        <li><strong>2)</strong> Introduce un número del <strong>1 al 9</strong>.</li>
+        <li><strong>3)</strong> Comprueba si es válido: no se repite en su fila, columna ni bloque 3×3.</li>
+        <li><strong>4)</strong> Repite el proceso hasta completar el tablero.</li>
+        <li><strong>5)</strong> Si te equivocas, corrige la casilla.</li>
+      </ul>
+    </section>
+
+    <!-- Reglas -->
+    <section class="games">
+      <h2>Reglas del Sudoku</h2>
+
+      <article class="game-card">
+        <h3>Reglas básicas (9×9)</h3>
+        <ul>
+          <li>Cada <strong>fila</strong> debe contener los números del 1 al 9 <strong>sin repetir</strong>.</li>
+          <li>Cada <strong>columna</strong> debe contener los números del 1 al 9 <strong>sin repetir</strong>.</li>
+          <li>Cada <strong>subcuadrícula 3×3</strong> debe contener los números del 1 al 9 <strong>sin repetir</strong>.
+          </li>
+        </ul>
+        <p>
+          No necesitas adivinar: un Sudoku bien hecho se resuelve con lógica.
+        </p>
+      </article>
+
+      <article class="game-card">
+        <h3>Errores típicos</h3>
+        <ul>
+          <li>Repetir un número en la misma fila o columna sin darte cuenta.</li>
+          <li>Olvidar revisar el bloque 3×3 donde estás colocando el número.</li>
+          <li>Rellenar “por intuición” sin confirmar opciones (acabas bloqueado).</li>
+        </ul>
+        <p>
+          Consejo: si tu juego marca errores, úsalo como feedback para aprender patrones.
+        </p>
+      </article>
+    </section>
+
+    <!-- Controles / Interfaz -->
+    <section class="intro">
+      <h2>Controles e interfaz</h2>
+
+      <ul>
+        <li><strong>Click</strong> en una casilla para seleccionarla.</li>
+        <li><strong>Teclas 1–9</strong> para introducir número.</li>
+        <li><strong>Supr/Backspace</strong> para borrar.</li>
+        <li><strong>Botón “Comprobar”</strong> para validar el tablero.</li>
+        <li><strong>Botón “Nueva partida”</strong> para reiniciar con otro tablero.</li>
+      </ul>
+    </section>
+
+    <!-- Consejos -->
+    <section class="games">
+      <h2>Consejos para resolver más rápido</h2>
+
+      <article class="game-card">
+        <h3>Empieza por lo fácil</h3>
+        <p>
+          Busca filas/columnas/bloques con muchos números ya puestos. Ahí suelen aparecer
+          casillas con una única opción.
+        </p>
+      </article>
+
+      <article class="game-card">
+        <h3>Usa “candidatos”</h3>
+        <p>
+          Apunta posibles números en una casilla (mentalmente o con modo notas) y elimina opciones
+          según avanzas.
+        </p>
+      </article>
+
+      <article class="game-card">
+        <h3>Revisa bloques 3×3 constantemente</h3>
+        <p>
+          Mucha gente se centra en filas/columnas y se olvida del bloque. Alternar la revisión
+          acelera muchísimo.
+        </p>
+      </article>
+    </section>
+
+    <!-- CTA -->
+    <section class="intro">
+      <h2>¿Listo para jugar?</h2>
+      <p>
+        Descarga el proyecto en Java desde la sección de descargas y compite por el mejor tiempo/puntuación
+        en el ranking.
+      </p>
+
+      <a href="descargas.html" class="game-btn">Descargar Sudoku (.java)</a>
+      <br>
+      <a href="ranking.html" class="game-btn">Ver Ranking</a>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+
+    <div class="footer-content">
+      <p>
+        © 2025 Portal de Juegos. Todos los derechos reservados.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a href="contacto.html">Contáctanos</a>
+      <a href="descargas.html">Descargas</a>
+      <a href="ranking.html">Ranking</a>
+    </div>
+
+    <div class="login-area">
+      <a href="#top" class="login-btn">Volver arriba ↑</a>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>

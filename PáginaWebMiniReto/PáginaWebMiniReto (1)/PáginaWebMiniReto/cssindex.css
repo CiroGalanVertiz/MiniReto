@@ -1,0 +1,871 @@
+/* ================= RESET Y VARIABLES ================= */
+* {
+  margin: 0; /* Elimina el margen exterior predeterminado de todos los elementos */
+  padding: 0; /* Elimina el relleno interior predeterminado de todos los elementos */
+  box-sizing: border-box; /* Incluye padding y border en el ancho/alto total del elemento */
+}
+
+:root {
+  /* Variables CSS personalizadas que se pueden reutilizar con var(--nombre-variable) */
+  --color-principal: #000000; /* Color negro para elementos principales */
+  --color-secundario: #ffffff; /* Color blanco para fondos y textos sobre oscuro */
+  --color-gris-claro: #f5f5f5; /* Gris muy claro para fondos suaves */
+  --color-gris-medio: #cccccc; /* Gris medio para bordes y elementos secundarios */
+  --color-gris-oscuro: #333333; /* Gris oscuro para textos principales */
+  --color-hover: #222222; /* Color casi negro para efectos hover */
+  --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera: 0px horizontal, 4px vertical, 6px difuminado, opacidad 10% */
+  --sombra-media: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mediana con más difuminado */
+  --sombra-fuerte: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra pronunciada para elementos elevados */
+  --transicion-rapida: 0.3s ease; /* Transición de 0.3 segundos con aceleración suave */
+  --transicion-media: 0.5s ease; /* Transición más lenta de 0.5 segundos */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Lista de fuentes alternativas, si no encuentra la primera usa la siguiente */
+  line-height: 1.6; /* Altura de línea 1.6 veces el tamaño de fuente (mejora legibilidad) */
+  color: var(--color-gris-oscuro); /* Color de texto predeterminado */
+  background: linear-gradient(135deg, var(--color-gris-claro) 0%, var(--color-secundario) 100%); /* Degradado diagonal de 135 grados desde gris claro a blanco */
+  min-height: 100vh; /* Altura mínima del 100% de la altura de la ventana del navegador */
+}
+
+/* ================= HEADER ================= */
+header {
+  background: linear-gradient(135deg, var(--color-principal) 0%, var(--color-gris-oscuro) 100%); /* Degradado de negro a gris oscuro */
+  color: var(--color-secundario); /* Color de texto blanco */
+  box-shadow: var(--sombra-media); /* Aplica sombra mediana */
+  position: relative; /* Necesario para que z-index funcione y para posicionar hijos con position: absolute */
+  z-index: 1000; /* Orden de apilamiento alto para que aparezca sobre otros elementos */
+}
+
+.topbar {
+  display: grid; /* Activa el sistema de rejilla CSS Grid */
+  grid-template-columns: 1fr 2fr auto; /* 3 columnas: la primera ocupa 1 fracción, la segunda 2 fracciones, la tercera su tamaño natural */
+  align-items: center; /* Alinea verticalmente todos los elementos al centro */
+  padding: 1rem 5%; /* Relleno: 1rem arriba/abajo, 5% del ancho izquierda/derecha */
+  gap: 2rem; /* Espacio de 2rem entre los elementos del grid */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borde inferior blanco con 10% de opacidad */
+}
+
+.logo h1 {
+  font-size: 1.8rem; /* Tamaño de fuente de 1.8 veces el tamaño base */
+  font-weight: 700; /* Grosor de fuente 700 (negrita) */
+  letter-spacing: 1px; /* Espacio de 1px entre cada letra */
+  text-transform: uppercase; /* Convierte todo el texto a MAYÚSCULAS */
+  background: linear-gradient(90deg, var(--color-secundario), var(--color-gris-medio)); /* Degradado horizontal de blanco a gris */
+  -webkit-background-clip: text; /* (Webkit/Chrome) El fondo solo se muestra dentro del texto */
+  background-clip: text; /* Estándar: el fondo solo se muestra dentro del texto */
+  -webkit-text-fill-color: transparent; /* (Webkit/Chrome) Hace el texto transparente para ver el gradiente de fondo */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra del texto: 2px derecha, 2px abajo, 4px difuminado, 30% opacidad */
+  transition: transform var(--transicion-rapida); /* Anima los cambios de transformación */
+}
+
+.logo h1:hover {
+  transform: scale(1.05); /* Aumenta el tamaño al 105% cuando pasas el cursor */
+}
+
+/* ================= NAVEGACIÓN ================= */
+.nav-list {
+  display: flex; /* Activa Flexbox para distribución flexible en una dimensión */
+  list-style: none; /* Elimina las viñetas/bullets de la lista */
+  gap: 0.5rem; /* Espacio de 0.5rem entre cada elemento de navegación */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea si no caben */
+}
+
+.nav-item {
+  position: relative; /* Necesario para posicionar el menú dropdown de forma absoluta respecto a este elemento */
+}
+
+.nav-link {
+  display: block; /* Convierte el enlace en elemento de bloque (ocupa todo el ancho disponible) */
+  padding: 0.8rem 1.5rem; /* Relleno: 0.8rem arriba/abajo, 1.5rem izquierda/derecha */
+  color: var(--color-secundario); /* Color de texto blanco */
+  text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
+  font-weight: 500; /* Grosor de fuente medio (semi-bold) */
+  border-radius: 8px; /* Esquinas redondeadas de 8px */
+  transition: all var(--transicion-rapida); /* Anima todos los cambios de propiedades */
+  position: relative; /* Necesario para posicionar el pseudo-elemento ::before */
+  overflow: hidden; /* Oculta cualquier contenido que sobresalga del elemento */
+}
+
+.nav-link::before {
+  content: ''; /* Contenido vacío obligatorio para que el pseudo-elemento aparezca */
+  position: absolute; /* Se posiciona respecto al .nav-link más cercano con position: relative */
+  bottom: 0; /* Se pega al borde inferior */
+  left: 50%; /* Comienza desde el centro horizontal */
+  width: 0; /* Ancho inicial de 0 (invisible) */
+  height: 2px; /* Altura de 2px (línea delgada) */
+  background: var(--color-secundario); /* Color de fondo blanco */
+  transform: translateX(-50%); /* Desplaza el elemento 50% de su propio ancho a la izquierda (para centrarlo) */
+  transition: width var(--transicion-rapida); /* Anima el cambio de ancho */
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.1); /* Fondo blanco con 10% de opacidad al pasar el cursor o estar activo */
+  transform: translateY(-2px); /* Desplaza el elemento 2px hacia arriba */
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 80%; /* El pseudo-elemento crece al 80% de ancho */
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative; /* Necesario para posicionar el menú dropdown */
+}
+
+.dropdown-toggle::after {
+  content: ' ▼'; /* Añade un triángulo hacia abajo después del texto */
+  font-size: 0.7rem; /* Tamaño pequeño para el icono */
+  margin-left: 0.3rem; /* Espacio de 0.3rem a la izquierda del icono */
+  transition: transform var(--transicion-rapida); /* Anima la rotación */
+}
+
+.dropdown:hover .dropdown-toggle::after {
+  transform: rotate(180deg); /* Rota el triángulo 180 grados (apunta hacia arriba) */
+}
+
+.dropdown-menu {
+  position: absolute; /* Se posiciona respecto al .dropdown más cercano con position: relative */
+  top: 100%; /* Se coloca justo debajo del elemento padre (al 100% de su altura) */
+  left: 0; /* Alineado al borde izquierdo del padre */
+  background: linear-gradient(180deg, var(--color-gris-oscuro), var(--color-principal)); /* Degradado vertical de gris oscuro a negro */
+  list-style: none; /* Sin viñetas */
+  min-width: 220px; /* Ancho mínimo de 220px */
+  box-shadow: var(--sombra-fuerte); /* Sombra pronunciada */
+  border-radius: 8px; /* Esquinas redondeadas */
+  overflow: hidden; /* Oculta contenido que sobresalga (necesario para border-radius en hijos) */
+  opacity: 0; /* Completamente transparente (invisible pero ocupa espacio) */
+  visibility: hidden; /* No visible y no interactuable */
+  transform: translateY(-10px); /* Desplazado 10px hacia arriba */
+  transition: all var(--transicion-rapida); /* Anima todas las propiedades */
+  margin-top: 0.5rem; /* Espacio de 0.5rem desde el elemento padre */
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1; /* Totalmente visible */
+  visibility: visible; /* Visible e interactuable */
+  transform: translateY(0); /* Vuelve a su posición original */
+}
+
+.dropdown-link {
+  display: block; /* Elemento de bloque */
+  padding: 1rem 1.5rem; /* Relleno */
+  color: var(--color-secundario); /* Color blanco */
+  text-decoration: none; /* Sin subrayado */
+  transition: all var(--transicion-rapida); /* Anima todos los cambios */
+  border-left: 3px solid transparent; /* Borde izquierdo transparente de 3px */
+}
+
+.dropdown-link:hover {
+  background: rgba(255, 255, 255, 0.15); /* Fondo semi-transparente */
+  border-left-color: var(--color-secundario); /* El borde izquierdo se vuelve blanco */
+  padding-left: 2rem; /* Aumenta el padding izquierdo (efecto de deslizamiento) */
+}
+
+/* ================= LOGIN ÁREA ================= */
+.login-area {
+  display: flex; /* Activa Flexbox */
+  justify-content: flex-end; /* Alinea el contenido a la derecha */
+}
+
+.login-btn {
+  padding: 0.8rem 2rem; /* Relleno */
+  background: var(--color-secundario); /* Fondo blanco */
+  color: var(--color-principal); /* Texto negro */
+  text-decoration: none; /* Sin subrayado */
+  font-weight: 600; /* Fuente semi-negrita */
+  border-radius: 25px; /* Esquinas muy redondeadas (botón tipo píldora) */
+  box-shadow: var(--sombra-suave); /* Sombra ligera */
+  transition: all var(--transicion-rapida); /* Anima todos los cambios */
+  border: 2px solid var(--color-secundario); /* Borde blanco de 2px */
+}
+
+.login-btn:hover {
+  background: transparent; /* Fondo transparente */
+  color: var(--color-secundario); /* Texto blanco */
+  transform: scale(1.05); /* Aumenta tamaño al 105% */
+  box-shadow: var(--sombra-media); /* Sombra más pronunciada */
+}
+
+/* ================= HEADER CONTENT ================= */
+.header-content {
+  text-align: center; /* Centra el texto horizontalmente */
+  padding: 3rem 5%; /* Relleno: 3rem arriba/abajo, 5% izquierda/derecha */
+  background: rgba(0, 0, 0, 0.2); /* Fondo negro con 20% de opacidad (overlay oscuro) */
+}
+
+.header-content h2 {
+  font-size: 2.5rem; /* Tamaño grande para el título */
+  margin-bottom: 1rem; /* Margen inferior de 1rem */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra pronunciada para mejorar legibilidad */
+  letter-spacing: 2px; /* Espacio de 2px entre letras */
+}
+
+.header-content p {
+  font-size: 1.1rem; /* Tamaño de fuente ligeramente mayor */
+  max-width: 700px; /* Ancho máximo de 700px (mejora legibilidad) */
+  margin: 0 auto; /* Margen 0 arriba/abajo, auto izquierda/derecha (centra horizontalmente) */
+  opacity: 0.9; /* 90% de opacidad (ligeramente transparente) */
+  line-height: 1.8; /* Altura de línea amplia para mejor lectura */
+}
+
+/* ================= MAIN ================= */
+main {
+  max-width: 1200px; /* Ancho máximo de 1200px */
+  margin: 3rem auto; /* Margen: 3rem arriba/abajo, auto izquierda/derecha (centra) */
+  padding: 0 5%; /* Relleno horizontal del 5% */
+}
+
+section {
+  margin-bottom: 4rem; /* Margen inferior de 4rem entre secciones */
+  background: var(--color-secundario); /* Fondo blanco */
+  padding: 3rem; /* Relleno de 3rem en todos los lados */
+  border-radius: 16px; /* Esquinas muy redondeadas */
+  box-shadow: var(--sombra-media); /* Sombra mediana */
+  transition: transform var(--transicion-media); /* Anima la transformación */
+}
+
+section:hover {
+  transform: translateY(-5px); /* Desplaza 5px hacia arriba al pasar el cursor */
+  box-shadow: var(--sombra-fuerte); /* Sombra más pronunciada */
+}
+
+section h2 {
+  font-size: 2rem; /* Tamaño de fuente grande */
+  margin-bottom: 1.5rem; /* Margen inferior */
+  color: var(--color-principal); /* Color negro */
+  text-align: center; /* Centra el texto */
+  position: relative; /* Necesario para el pseudo-elemento ::after */
+  padding-bottom: 1rem; /* Relleno inferior */
+}
+
+section h2::after {
+  content: ''; /* Contenido vacío */
+  position: absolute; /* Posicionado respecto al h2 */
+  bottom: 0; /* Pegado al borde inferior */
+  left: 50%; /* Comienza desde el centro */
+  transform: translateX(-50%); /* Centra el elemento */
+  width: 80px; /* Ancho de 80px */
+  height: 3px; /* Altura de 3px (línea decorativa) */
+  background: linear-gradient(90deg, transparent, var(--color-principal), transparent); /* Degradado que se desvanece en los extremos */
+}
+
+/* ================= INTRO ================= */
+.intro {
+  min-height: 30vh; /* Altura mínima del 30% de la ventana */
+  display: flex; /* Activa Flexbox */
+  flex-direction: column; /* Coloca los elementos en columna (vertical) */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+}
+
+.intro p {
+  font-size: 1.1rem; /* Tamaño de fuente */
+  margin-bottom: 1rem; /* Margen inferior */
+  text-align: center; /* Texto centrado */
+  color: var(--color-gris-oscuro); /* Color gris oscuro */
+}
+
+.intro strong {
+  color: var(--color-principal); /* Color negro para texto en negrita */
+  font-weight: 700; /* Peso de fuente más grueso */
+}
+
+/* ================= FORMULARIOS ================= */
+.login-form {
+  display: flex; /* Activa Flexbox */
+  flex-direction: column; /* Elementos en columna */
+  gap: 1.5rem; /* Espacio de 1.5rem entre elementos */
+  width: 100%; /* Ancho del 100% del contenedor padre */
+  max-width: 500px; /* Ancho máximo de 500px */
+  margin: 0 auto; /* Centra horizontalmente */
+}
+
+.login-form label {
+  font-weight: 600; /* Fuente semi-negrita */
+  color: var(--color-principal); /* Color negro */
+  font-size: 0.95rem; /* Tamaño ligeramente menor */
+  margin-bottom: -1rem; /* Margen negativo para acercar al input siguiente */
+  letter-spacing: 0.5px; /* Espacio entre letras */
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form textarea {
+  width: 100%; /* Ancho completo */
+  padding: 1rem 1.25rem; /* Relleno interno */
+  border: 2px solid var(--color-gris-medio); /* Borde gris de 2px */
+  border-radius: 8px; /* Esquinas redondeadas */
+  font-size: 1rem; /* Tamaño de fuente */
+  font-family: inherit; /* Hereda la fuente del padre */
+  transition: all var(--transicion-rapida); /* Anima todos los cambios */
+  background: var(--color-secundario); /* Fondo blanco */
+  color: var(--color-gris-oscuro); /* Texto gris oscuro */
+}
+
+.login-form input:focus,
+.login-form textarea:focus {
+  outline: none; /* Elimina el contorno azul predeterminado del navegador */
+  border-color: var(--color-principal); /* Cambia el color del borde a negro */
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Anillo de enfoque: sin desplazamiento, sin difuminado, 3px de expansión */
+  transform: translateY(-2px); /* Levanta el campo 2px */
+}
+
+.login-form input::placeholder,
+.login-form textarea::placeholder {
+  color: var(--color-gris-medio); /* Color gris para el texto placeholder */
+  opacity: 0.8; /* 80% de opacidad */
+}
+
+.login-form textarea {
+  resize: vertical; /* Permite redimensionar solo verticalmente */
+  min-height: 120px; /* Altura mínima de 120px */
+  font-family: inherit; /* Hereda la fuente (importante para textarea) */
+}
+
+/* Fila de checkbox y enlace */
+.form-row {
+  display: flex; /* Activa Flexbox */
+  justify-content: space-between; /* Espacia los elementos en los extremos */
+  align-items: center; /* Alinea verticalmente al centro */
+  flex-wrap: wrap; /* Permite salto de línea en pantallas pequeñas */
+  gap: 1rem; /* Espacio entre elementos */
+}
+
+.checkbox {
+  display: flex; /* Activa Flexbox */
+  align-items: center; /* Centra verticalmente el checkbox y el texto */
+  gap: 0.5rem; /* Espacio entre checkbox y label */
+  cursor: pointer; /* Cambia el cursor a manita al pasar por encima */
+  font-weight: 500; /* Fuente semi-negrita */
+  color: var(--color-gris-oscuro); /* Color gris oscuro */
+  user-select: none; /* Previene la selección de texto al hacer clic */
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px; /* Ancho del checkbox */
+  height: 18px; /* Alto del checkbox */
+  cursor: pointer; /* Cursor tipo manita */
+  accent-color: var(--color-principal); /* Color del checkbox cuando está marcado (navegadores modernos) */
+}
+
+.checkbox:hover {
+  color: var(--color-principal); /* Cambia a negro al pasar el cursor */
+}
+
+.form-link {
+  color: var(--color-principal); /* Color negro */
+  text-decoration: none; /* Sin subrayado */
+  font-weight: 500; /* Fuente semi-negrita */
+  transition: all var(--transicion-rapida); /* Anima cambios */
+  position: relative; /* Necesario para el pseudo-elemento */
+}
+
+.form-link::after {
+  content: ''; /* Contenido vacío */
+  position: absolute; /* Posicionado respecto al enlace */
+  bottom: -2px; /* 2px debajo del texto */
+  left: 0; /* Comienza desde la izquierda */
+  width: 0; /* Ancho inicial de 0 */
+  height: 2px; /* Altura de 2px */
+  background: var(--color-principal); /* Color negro */
+  transition: width var(--transicion-rapida); /* Anima el ancho */
+}
+
+.form-link:hover {
+  color: var(--color-gris-oscuro); /* Cambia a gris oscuro */
+}
+
+.form-link:hover::after {
+  width: 100%; /* El subrayado crece al 100% */
+}
+
+.form-note {
+  text-align: center; /* Texto centrado */
+  color: var(--color-gris-oscuro); /* Color gris oscuro */
+  font-size: 0.95rem; /* Tamaño ligeramente menor */
+  margin-top: -0.5rem; /* Margen negativo para acercar al elemento superior */
+}
+
+.form-note .form-link {
+  font-weight: 600; /* Enlaces en negrita dentro de las notas */
+}
+
+/* Botón de submit en formularios */
+.login-form .game-btn {
+  width: 100%; /* Ancho completo */
+  margin-top: 0.5rem; /* Margen superior */
+  cursor: pointer; /* Cursor tipo manita */
+  font-size: 1.1rem; /* Tamaño de fuente mayor */
+  padding: 1.2rem 2rem; /* Relleno amplio */
+}
+
+/* Estados de validación */
+.login-form input:valid {
+  border-color: var(--color-gris-medio); /* Mantiene borde gris si el campo es válido */
+}
+
+.login-form input:invalid:not(:placeholder-shown) {
+  border-color: #ff4444; /* Borde rojo si el campo es inválido Y el usuario ha escrito algo */
+}
+
+/* Estilos para campos deshabilitados */
+.login-form input:disabled,
+.login-form textarea:disabled {
+  background: var(--color-gris-claro); /* Fondo gris claro */
+  cursor: not-allowed; /* Cursor de "no permitido" */
+  opacity: 0.6; /* 60% de opacidad (aspecto deshabilitado) */
+}
+
+/* ================= GAMES GRID ================= */
+.games {
+  display: grid; /* Activa CSS Grid */
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
+  gap: 2rem; /* Espacio de 2rem entre tarjetas */
+}
+
+.games h2 {
+  grid-column: 1 / -1; /* Ocupa desde la columna 1 hasta la última (todas las columnas) */
+}
+
+.game-card {
+  background: linear-gradient(135deg, var(--color-gris-claro) 0%, var(--color-secundario) 100%); /* Degradado diagonal */
+  border-radius: 12px; /* Esquinas redondeadas */
+  padding: 2rem; /* Relleno interno */
+  box-shadow: var(--sombra-suave); /* Sombra suave */
+  transition: all var(--transicion-media); /* Anima todos los cambios */
+  border: 2px solid transparent; /* Borde transparente inicial */
+  display: grid; /* Activa Grid dentro de la tarjeta */
+  gap: 1.5rem; /* Espacio entre elementos internos */
+  grid-template-rows: auto 1fr auto auto; /* 4 filas: auto, flexible, auto, auto */
+}
+
+.game-card:hover {
+  transform: translateY(-10px) scale(1.02); /* Desplaza 10px arriba y aumenta 2% el tamaño */
+  box-shadow: var(--sombra-fuerte); /* Sombra más pronunciada */
+  border-color: var(--color-principal); /* Borde negro visible */
+}
+
+.game-card h3 {
+  font-size: 1.8rem; /* Tamaño grande */
+  color: var(--color-principal); /* Color negro */
+  text-align: center; /* Texto centrado */
+  letter-spacing: 1px; /* Espacio entre letras */
+}
+
+.game-image {
+  display: block; /* Elemento de bloque */
+  overflow: hidden; /* Oculta partes de la imagen que sobresalgan al hacer zoom */
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: var(--sombra-suave); /* Sombra suave */
+  position: relative; /* Necesario para el pseudo-elemento ::after */
+}
+
+.game-image::after {
+  content: ''; /* Contenido vacío */
+  position: absolute; /* Capa sobre la imagen */
+  top: 0; /* Pegado arriba */
+  left: 0; /* Pegado a la izquierda */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), transparent); /* Overlay oscuro que se desvanece */
+  opacity: 0; /* Invisible inicialmente */
+  transition: opacity var(--transicion-rapida); /* Anima la opacidad */
+}
+
+.game-image:hover::after {
+  opacity: 1; /* Se vuelve visible al pasar el cursor */
+}
+
+.game-image img {
+  width: 100%; /* Ancho completo del contenedor */
+  height: 250px; /* Altura fija de 250px */
+  object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
+  transition: transform var(--transicion-media); /* Anima la transformación */
+  filter: grayscale(30%) contrast(1.1); /* Aplica 30% de escala de grises y aumenta contraste */
+}
+
+.game-image:hover img {
+  transform: scale(1.1); /* Aumenta el tamaño al 110% (efecto zoom) */
+  filter: grayscale(0%) contrast(1.2); /* Elimina escala de grises y aumenta más el contraste */
+}
+
+.game-card p {
+  font-size: 1rem; /* Tamaño de fuente normal */
+  color: var(--color-gris-oscuro); /* Color gris oscuro */
+  text-align: center; /* Texto centrado */
+  line-height: 1.7; /* Altura de línea amplia */
+}
+
+.game-btn {
+  display: inline-block; /* Elemento inline que respeta ancho/alto */
+  padding: 1rem 2rem; /* Relleno */
+  background: var(--color-principal); /* Fondo negro */
+  color: var(--color-secundario); /* Texto blanco */
+  text-decoration: none; /* Sin subrayado */
+  text-align: center; /* Texto centrado */
+  border-radius: 8px; /* Esquinas redondeadas */
+  font-weight: 600; /* Fuente semi-negrita */
+  transition: all var(--transicion-rapida); /* Anima todos los cambios */
+  box-shadow: var(--sombra-suave); /* Sombra suave */
+  border: 2px solid var(--color-principal); /* Borde negro */
+  justify-self: center; /* Se centra horizontalmente en el grid */
+}
+
+.game-btn:hover {
+  background: var(--color-secundario); /* Fondo blanco */
+  color: var(--color-principal); /* Texto negro */
+  transform: translateY(-3px); /* Levanta 3px */
+  box-shadow: var(--sombra-media); /* Sombra más pronunciada */
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background: linear-gradient(135deg, var(--color-principal) 0%, var(--color-gris-oscuro) 100%); /* Degradado negro a gris oscuro */
+  color: var(--color-secundario); /* Texto blanco */
+  padding: 2rem 5%; /* Relleno */
+  margin-top: 4rem; /* Margen superior para separar del contenido */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Sombra hacia arriba (nota el valor negativo) */
+}
+
+.footer-content {
+  text-align: center; /* Texto centrado */
+  margin-bottom: 1.5rem; /* Margen inferior */
+}
+
+.footer-content p {
+  font-size: 0.95rem; /* Tamaño de fuente menor */
+  opacity: 0.9; /* 90% de opacidad */
+}
+
+.footer-links {
+  display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra horizontalmente los enlaces */
+  gap: 2rem; /* Espacio de 2rem entre cada enlace */
+  flex-wrap: wrap; /* Permite que los enlaces salten a nueva línea si no caben */
+}
+
+.footer-links a {
+  color: var(--color-secundario); /* Color blanco para los enlaces */
+  text-decoration: none; /* Elimina el subrayado */
+  transition: all var(--transicion-rapida); /* Anima todos los cambios de propiedades */
+  padding: 0.5rem 1rem; /* Relleno: 0.5rem arriba/abajo, 1rem izquierda/derecha */
+  border-radius: 5px; /* Esquinas ligeramente redondeadas */
+  position: relative; /* Necesario para posicionar el pseudo-elemento ::after */
+}
+
+.footer-links a::after {
+  content: ''; /* Contenido vacío obligatorio */
+  position: absolute; /* Posicionado respecto al enlace */
+  bottom: 0; /* Pegado al borde inferior */
+  left: 0; /* Comienza desde la izquierda */
+  width: 0; /* Ancho inicial de 0 (invisible) */
+  height: 2px; /* Altura de 2px (línea delgada) */
+  background: var(--color-secundario); /* Color blanco */
+  transition: width var(--transicion-rapida); /* Anima el cambio de ancho */
+}
+
+.footer-links a:hover {
+  background: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
+}
+
+.footer-links a:hover::after {
+  width: 100%; /* La línea crece al 100% del ancho */
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  /* Reglas que se aplican cuando la pantalla es menor o igual a 1024px (tablets) */
+  
+  .topbar {
+    grid-template-columns: 1fr; /* Cambia a una sola columna */
+    text-align: center; /* Centra el texto */
+    gap: 1rem; /* Reduce el espacio entre elementos */
+  }
+
+  .nav-list {
+    justify-content: center; /* Centra la navegación */
+  }
+
+  .login-area {
+    justify-content: center; /* Centra el área de login */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Reglas para pantallas menores o iguales a 768px (tablets pequeñas y móviles grandes) */
+  
+  .logo h1 {
+    font-size: 1.5rem; /* Reduce el tamaño del logo */
+  }
+
+  .header-content h2 {
+    font-size: 2rem; /* Reduce el tamaño del título */
+  }
+
+  .header-content p {
+    font-size: 1rem; /* Reduce el tamaño del párrafo */
+  }
+
+  section {
+    padding: 2rem 1.5rem; /* Reduce el relleno de las secciones */
+  }
+
+  section h2 {
+    font-size: 1.6rem; /* Reduce el tamaño de los títulos de sección */
+  }
+
+  .nav-list {
+    flex-direction: column; /* Coloca los enlaces de navegación en columna (vertical) */
+    align-items: center; /* Centra los elementos */
+  }
+
+  .dropdown-menu {
+    position: static; /* Cambia de posición absoluta a estática (flujo normal) */
+    opacity: 1; /* Siempre visible */
+    visibility: visible; /* Visible */
+    transform: none; /* Sin transformación */
+    margin-top: 0.5rem; /* Margen superior */
+    display: none; /* Oculto por defecto (se muestra con hover) */
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Muestra el menú al hacer hover */
+  }
+
+  .game-image img {
+    height: 200px; /* Reduce la altura de las imágenes de juegos */
+  }
+
+  .footer-links {
+    flex-direction: column; /* Coloca los enlaces del footer en columna */
+    gap: 1rem; /* Reduce el espacio entre enlaces */
+  }
+
+  .intro {
+    min-height: 60vh; /* Aumenta la altura mínima de la intro */
+  }
+
+  .games {
+    grid-template-columns: 1fr; /* Cambia a una sola columna para las tarjetas de juegos */
+  }
+
+  .login-form {
+    max-width: 100%; /* El formulario ocupa todo el ancho disponible */
+  }
+
+  .form-row {
+    flex-direction: column; /* Coloca checkbox y enlace en columna */
+    align-items: flex-start; /* Alinea a la izquierda */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Reglas para pantallas menores o iguales a 480px (móviles pequeños) */
+  
+  .topbar {
+    padding: 1rem 3%; /* Reduce el relleno horizontal */
+  }
+
+  main {
+    padding: 0 3%; /* Reduce el relleno horizontal del main */
+  }
+
+  .logo h1 {
+    font-size: 1.2rem; /* Reduce aún más el tamaño del logo */
+  }
+
+  .header-content {
+    padding: 2rem 3%; /* Reduce el relleno */
+  }
+
+  .header-content h2 {
+    font-size: 1.6rem; /* Reduce el tamaño del título */
+  }
+
+  section {
+    padding: 1.5rem 1rem; /* Reduce el relleno interno */
+    margin-bottom: 2rem; /* Reduce el margen entre secciones */
+  }
+
+  .game-card {
+    padding: 1.5rem; /* Reduce el relleno de las tarjetas */
+  }
+
+  .game-image img {
+    height: 180px; /* Reduce la altura de las imágenes */
+  }
+
+  .intro {
+    min-height: 50vh; /* Reduce la altura mínima de la intro */
+  }
+
+  .games {
+    grid-template-columns: 1fr; /* Mantiene una sola columna */
+  }
+}
+
+/* ================= ANIMACIONES Y EFECTOS ================= */
+@keyframes fadeIn {
+  /* Define una animación llamada "fadeIn" */
+  
+  from {
+    /* Estado inicial (0% de la animación) */
+    opacity: 0; /* Completamente transparente */
+    transform: translateY(20px); /* Desplazado 20px hacia abajo */
+  }
+  to {
+    /* Estado final (100% de la animación) */
+    opacity: 1; /* Completamente visible */
+    transform: translateY(0); /* En su posición original */
+  }
+}
+
+section {
+  animation: fadeIn 0.6s ease-out; /* Aplica la animación fadeIn durante 0.6 segundos con desaceleración al final */
+}
+
+/* Efecto de brillo en hover */
+.game-btn::before,
+.login-btn::before {
+  content: ''; /* Contenido vacío */
+  position: absolute; /* Posicionado respecto al botón */
+  top: 50%; /* Centrado verticalmente */
+  left: 50%; /* Centrado horizontalmente */
+  width: 0; /* Ancho inicial de 0 */
+  height: 0; /* Alto inicial de 0 */
+  border-radius: 50%; /* Forma circular */
+  background: rgba(255, 255, 255, 0.3); /* Fondo blanco semi-transparente */
+  transform: translate(-50%, -50%); /* Centra el elemento en su posición */
+  transition: width 0.6s, height 0.6s; /* Anima el ancho y alto durante 0.6 segundos */
+}
+
+.game-btn:hover::before,
+.login-btn:hover::before {
+  width: 300px; /* Crece a 300px de ancho */
+  height: 300px; /* Crece a 300px de alto (efecto de onda expansiva) */
+}
+
+.game-btn,
+.login-btn {
+  position: relative; /* Necesario para posicionar el pseudo-elemento ::before */
+  overflow: hidden; /* Oculta la parte del efecto que sobresale del botón */
+}
+
+/* Mejora de accesibilidad */
+:focus-visible {
+  /* Pseudo-clase que se activa cuando un elemento tiene foco Y fue enfocado con teclado (no con mouse) */
+  outline: 3px solid var(--color-principal); /* Contorno negro de 3px */
+  outline-offset: 3px; /* Espacio de 3px entre el elemento y el contorno */
+}
+
+/* Optimización de rendimiento */
+.game-image img,
+.nav-link,
+.game-btn,
+.login-btn {
+  will-change: transform; /* Indica al navegador que estas propiedades cambiarán (optimiza el renderizado con GPU) */
+}
+
+/* Mejora del contraste para lectura */
+::selection {
+  /* Pseudo-elemento que estiliza el texto cuando el usuario lo selecciona */
+  background: var(--color-principal); /* Fondo negro */
+  color: var(--color-secundario); /* Texto blanco */
+}
+
+/* ================= TABLAS DE RANKING ================= */
+.ranking-mini {
+  width: 100%; /* Ancho completo del contenedor padre */
+  border-collapse: collapse; /* Fusiona los bordes de celdas adyacentes (elimina espacios dobles) */
+  margin: 1.5rem 0; /* Margen: 1.5rem arriba y abajo, 0 izquierda y derecha */
+  background: var(--color-secundario); /* Fondo blanco */
+  border-radius: 8px; /* Esquinas redondeadas */
+  overflow: hidden; /* Necesario para que border-radius funcione en tablas */
+  box-shadow: var(--sombra-suave); /* Sombra suave */
+}
+
+.ranking-mini thead {
+  background: linear-gradient(135deg, var(--color-principal) 0%, var(--color-gris-oscuro) 100%); /* Degradado de negro a gris oscuro */
+  color: var(--color-secundario); /* Texto blanco */
+}
+
+.ranking-mini thead th {
+  padding: 1rem; /* Relleno de 1rem en todos los lados */
+  text-align: center; /* Centra el texto horizontalmente */
+  font-weight: 600; /* Fuente semi-negrita */
+  font-size: 1rem; /* Tamaño de fuente normal */
+  letter-spacing: 0.5px; /* Espacio de 0.5px entre letras */
+  text-transform: uppercase; /* Convierte el texto a MAYÚSCULAS */
+}
+
+.ranking-mini tbody tr {
+  transition: all var(--transicion-rapida); /* Anima todos los cambios en la fila */
+  border-bottom: 1px solid var(--color-gris-claro); /* Borde inferior gris claro de 1px */
+}
+
+.ranking-mini tbody tr:last-child {
+  border-bottom: none; /* Elimina el borde de la última fila */
+}
+
+.ranking-mini tbody tr:hover {
+  background: var(--color-gris-claro); /* Fondo gris claro al pasar el cursor */
+  transform: scale(1.02); /* Aumenta el tamaño al 102% */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra interior (inset) de 10px difuminados */
+}
+
+.ranking-mini tbody td {
+  padding: 1rem; /* Relleno de 1rem */
+  text-align: center; /* Centra el texto */
+  color: var(--color-gris-oscuro); /* Color gris oscuro */
+  font-size: 0.95rem; /* Tamaño ligeramente menor */
+}
+
+/* Primera columna (posición) */
+.ranking-mini tbody td:first-child {
+  font-weight: 700; /* Fuente negrita */
+  font-size: 1.1rem; /* Tamaño mayor */
+  color: var(--color-principal); /* Color negro */
+}
+
+/* Segunda columna (usuario) */
+.ranking-mini tbody td:nth-child(2) {
+  font-weight: 600; /* Fuente semi-negrita */
+  text-align: left; /* Alinea el texto a la izquierda */
+  padding-left: 1.5rem; /* Relleno izquierdo mayor */
+}
+
+/* Tercera columna (puntos) */
+.ranking-mini tbody td:last-child {
+  font-weight: 700; /* Fuente negrita */
+  color: var(--color-principal); /* Color negro */
+}
+
+/* Medallas para los 3 primeros puestos */
+.ranking-mini tbody tr:nth-child(1) td:first-child {
+  color: #FFD700; /* Color oro para el primer puesto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra de texto para efecto 3D */
+}
+
+.ranking-mini tbody tr:nth-child(2) td:first-child {
+  color: #C0C0C0; /* Color plata para el segundo puesto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra de texto */
+}
+
+.ranking-mini tbody tr:nth-child(3) td:first-child {
+  color: #CD7F32; /* Color bronce para el tercer puesto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra de texto */
+}
+
+/* Efecto especial para el primer puesto */
+.ranking-mini tbody tr:nth-child(1) {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.05), transparent); /* Degradado dorado muy sutil de izquierda a derecha */
+}
+
+.ranking-mini tbody tr:nth-child(1):hover {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), var(--color-gris-claro)); /* Degradado dorado más visible al hacer hover */
+}

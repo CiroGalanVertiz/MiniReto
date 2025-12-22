@@ -48,7 +48,6 @@ public class Juego {
         laberinto.inicializar();
 
         while (!laberinto.verificarVictoria()) {
-            System.out.println(laberinto.verificarVictoria());
             laberinto.mostrar(laberinto.getMapa());
             System.out.print("Mover (W/A/S/D): ");
             char movimiento = scanner.nextLine().toUpperCase().charAt(0);

@@ -207,7 +207,7 @@ public class Laberinto {
         salidaX = 10;
         salidaY = 19;
 
-        mapa[11][19] = "S";
+        mapa[10][19] = "S";
     }
 
     public void mostrar(String[][] mapa) {
